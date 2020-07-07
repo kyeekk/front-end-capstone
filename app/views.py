@@ -76,7 +76,7 @@ def Convert():
     if request.method == 'GET': 
         rate = 0
         return render_template('Convert.html', form = form, rate = rate)
-   
+    form = Form()
     if request.method == 'POST':   
         c1= form.currencies.data
         x= c1
@@ -84,10 +84,9 @@ def Convert():
         arbitrage.run(x) 
         
         
-        x =  input("Enter Source currency code: ")
-        return render_template('rates.html', form=form, rate=rate, x=x )
-            
-    
+        return render_template('rates.html',arbitrage=arbitrage )
+
+       
 
 #@app.route ('/rates') 
 #def rates(): 
