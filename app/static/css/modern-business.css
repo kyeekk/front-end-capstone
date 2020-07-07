@@ -15,6 +15,13 @@ body {
 
 } 
 
+.img-responsive{   
+  object-position: 50px;
+} 
+
+.my-4{
+  text-align: center;
+}
 .card-img-top {
   max-height: 250px;
   min-height: 150px;

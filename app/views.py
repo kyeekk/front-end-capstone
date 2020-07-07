@@ -31,27 +31,27 @@ SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
     
-def RealTimeCurrencyExchangeRate(from_currency,to_currency) : 
+# def RealTimeCurrencyExchangeRate(from_currency,to_currency) : 
   
-    # importing required libraries 
-    # base_url variable store base url  
-    base_url = r"https://www.freeforexapi.com/api/live?"
+#     # importing required libraries 
+#     # base_url variable store base url  
+#     base_url = r"https://www.freeforexapi.com/api/live?"
   
-    # main_url variable store complete url 
-    main_url = base_url + "pairs=" + from_currency+ to_currency  
+#     # main_url variable store complete url 
+#     main_url = base_url + "pairs=" + from_currency+ to_currency  
 
-    # get method of requests module  
-    # return response object  
-    req_ob = requests.get(main_url) 
+#     # get method of requests module  
+#     # return response object  
+#     req_ob = requests.get(main_url) 
   
-    # json method return json format 
-    # data into python dictionary data type. 
+#     # json method return json format 
+#     # data into python dictionary data type. 
       
-    # result contains list of nested dictionaries 
-    result = req_ob.json()
-    value = result ['rates'][from_currency+to_currency]['rate']
+#     # result contains list of nested dictionaries 
+#     result = req_ob.json()
+#     value = result ['rates'][from_currency+to_currency]['rate']
 
-    return(value)
+#     return(value)
 
 def format_date_joined():
     now = datetime.datetime.now() # today's date
@@ -72,27 +72,24 @@ def home():
 @app.route('/Convert', methods = ['GET','POST'])
 #@login_required
 def Convert():
-    form = Form()
-    if request.method == 'GET': 
-        rate = 0
+    if request.method == 'GET':
+        form = Form()
+        rate = 0 
+        
         return render_template('Convert.html', form = form, rate = rate)
     form = Form()
     if request.method == 'POST':   
-        c1= form.currencies.data
-        x= c1
-        arbitrage = Arbitrage()  
-        arbitrage.run(x) 
-        
-        
-        return render_template('rates.html',arbitrage=arbitrage )
-
+        c1 = form.currencies.data 
        
-
-#@app.route ('/rates') 
-#def rates(): 
-   # rate = res['rates'][i]['rate'] 
-    #print(str(rate))
-    #return render_template('rates.html') 
+        test = Arbitrage.run(Arbitrage,c1)   
+        
+        print(form)  
+        print('aaaaaaa')
+        print(c1) 
+        print('aaaaaaaaaa')
+        print(test)
+       # print(str(rate)) 
+        return render_template('rates.html', c1 = c1, form=form, test=test)   
 
 
 @app.route('/about/')
@@ -106,10 +103,10 @@ def profile():
     return render_template('profile.html',date = datejoined) 
 
 @app.route("/rates") 
-def rates(): 
-    return render_template('rates.html') 
+def rates():  
+    return render_template('rates.html', test=test, c1=c1) 
 
-@app.route('/services')
+@app.route('/services') 
 def services():
     return render_template('services.html') 
 
