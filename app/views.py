@@ -4,7 +4,8 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """ 
-from typing import Tuple, List
+from typing import Tuple, List 
+from app.currency_arbitrage_2 import Arbitrage
 from math import log
 from app import app, db, login_manager
 from flask import render_template, request, redirect, url_for, flash
@@ -71,80 +72,17 @@ def home():
 @app.route('/Convert', methods = ['GET','POST'])
 #@login_required
 def Convert():
-    if request.method == 'GET':
-        form = Form()
+    form = Form()
+    if request.method == 'GET': 
         rate = 0
         return render_template('Convert.html', form = form, rate = rate)
-    form = Form()
-    if request.method == 'POST':  
-        currencies = ['JMD', 'USD', 'CAD', 'GBP', 'EUR', 'TTD', 'KYD', 'CHF']
-
-        rates = [ 
-            [1, 140.0167, 99.9917, 175.0981, 154.4037, 20.7681, 170.7521, 144.01687],
-            [0.0106, 1, 0.71, 1.2412, 1.0826, 0.1516, 1.2091, 1.0345],
-            [0.106, 1.4092, 1, 1.7469, 1.5289, 0.2128, 1.6843, 1.4453],
-            [0.0058, 0.8137, 0.5844, 1, 0.876, 0.125, 0.9711, 0.8321],
-            [0.0066, 0.9231, 0.6662, 1.1481, 1 , 0.1465, 1.1115, 0.9549],
-            [0.0483, 6.6254, 4.6556, 8.8163, 7.3246, 1 , 8.1245, 6.9619],
-            [0.006, 0.8325, 0.5833, 1.0349, 0.9026, 0.1230, 1 , 0.8614],
-            [0.0070, 0.9732, 0.6971, 1.2036, 1.0564, 0.1462, 1.1762, 1]
-        ]  
-
-    def negate_logarithm_convertor(graph: Tuple[Tuple[float]]) -> List[List[float]]:
-        ''' log of each rate in graph and negate it'''
-        result = [[-log(edge) for edge in row] for row in graph]
-        return result
-
-
-    def arbitrage(currency_tuple: tuple, rates_matrix: Tuple[Tuple[float, ...]]):  
-        trans_graph = negate_logarithm_convertor(rates_matrix)
-
-        # Pick any source vertex -- we can run Bellman-Ford from any vertex and get the right result
-
-        source = 0
-        n = len(trans_graph)
-        min_dist = [float('inf')] * n
-        pre = [-1] * n 
-        min_dist[source] = source 
+   
+    if request.method == 'POST':   
+        c1= form.currencies.data
+        x= c1
+        arbitrage = Arbitrage()  
+        arbitrage.run(x) 
         
-        for _ in range(n-1): 
-            for source_curr in range(n): 
-                for dest_curr in range(n): 
-                    if min_dist[dest_curr] > min_dist[source_curr] + trans_graph[source_curr][dest_curr]: 
-                        min_dist[dest_curr] = min_dist[source_curr] + trans_graph[source_curr][dest_curr]
-                        pre[dest_curr] = source_curr
-
-    
-        for source_curr in range(n): 
-            for dest_curr in range(n): 
-                if min_dist[dest_curr] > min_dist[source_curr] + trans_graph[source_curr][dest_curr]: 
-                    print_cycle = [dest_curr, source_curr]
-               
-                while pre[source_curr] not in  print_cycle:
-                    print_cycle.append(pre[source_curr])
-                    source_curr = pre[source_curr]    
-                print_cycle.append(pre[source_curr])
-                k = len(print_cycle)
-                if k> 3:
-                    print ('\n', print_cycle)
-                    print("Arbitrage Opportunity:")
-                    print(" --> ".join([currencies[p] for p in print_cycle[::-1]]))
-
-    def preamble(currencies, rates, x): 
-        index = currencies.index(x) 
-        if currencies[index] != currencies[len(currencies)-1]: 
-            print ('true')
-            j = currencies[len(currencies)-1]
-            currencies[len(currencies)-1] = currencies[index]
-            currencies[index] = j
-            print(currencies)
-            print (rates[index])
-            print (rates)
-            i = rates[len(rates)-1]
-            rates[len(rates)-1] = rates[index]
-            rates[index] = i
-            print(rates)
-        arbitrage(currencies, rates) 
         
         x =  input("Enter Source currency code: ")
         return render_template('rates.html', form=form, rate=rate, x=x )
@@ -168,6 +106,9 @@ def profile():
     datejoined = format_date_joined()
     return render_template('profile.html',date = datejoined) 
 
+@app.route("/rates") 
+def rates(): 
+    return render_template('rates.html') 
 
 @app.route('/services')
 def services():
