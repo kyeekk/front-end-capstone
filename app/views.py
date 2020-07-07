@@ -455,12 +455,17 @@ def home():
 def Convert():
     if request.method == 'GET':
         form = Form()
-        rate = 0
+        rate = 0 
+        
         return render_template('Convert.html', form = form, rate = rate)
     form = Form()
     if request.method == 'POST':   
-       return render_template('rates.html')
-
+       #return render_template('rates.html') 
+        c1 = form.currencies.data 
+       
+        test = Arbitrage.run(Arbitrage,c1)   
+         
+        
         #c1 = form.currencies.data
         #c2 = form.currencies1.data
         #b = r"https://www.freeforexapi.com/api/live?"
@@ -469,9 +474,13 @@ def Convert():
         #r = requests.get(m)
         #res = r.json()
         #rate = res['rates'][i]['rate']  
-
+        print(form)  
+        print('aaaaaaa')
+        print(c1) 
+        print('aaaaaaaaaa')
+        print(test)
        # print(str(rate)) 
-        #return render_template('rates.html', form = form, rate = rate)   
+        return render_template('rates.html', c1 = c1, form=form, test=test)   
 
             
     
@@ -495,13 +504,9 @@ def profile():
 
 @app.route("/rates") 
 def rates():  
-    form= Form()  
-    c1 = form.currencies.data
-    test = Arbitrage()  
-    test.run(c1)
-    return render_template('rates.html', test=test) 
+    return render_template('rates.html', test=test, c1=c1) 
 
-@app.route('/services')
+@app.route('/services') 
 def services():
     return render_template('services.html') 
 

@@ -16,7 +16,7 @@ class Arbitrage:
         [0.0070, 0.9732, 0.6971, 1.2036, 1.0564, 0.1462, 1.1762, 1]
     ]
 
-    def negate_logarithm_convertor(self,graph: Tuple[Tuple[float]]) -> List[List[float]]:
+    def negate_logarithm_convertor(graph: Tuple[Tuple[float]]) -> List[List[float]]:
         ''' log of each rate in graph and negate it'''
         result = [[-log(edge) for edge in row] for row in graph]
         return result
@@ -34,7 +34,7 @@ class Arbitrage:
         min_dist = [float('inf')] * n
 
         pre = [-1] * n
-        
+        result = []
         min_dist[source] = source
 
         # 'Relax edges |V-1| times'
@@ -58,28 +58,30 @@ class Arbitrage:
                     print_cycle.append(pre[source_curr])
                     k = len(print_cycle)
                     if k> 3:
-                        print ('\n', print_cycle)
-                        print("Arbitrage Opportunity:")
-                        print(" --> ".join([self.currencies[p] for p in print_cycle[::-1]]))
+                        # print ('\n', print_cycle)
+                        # print("Arbitrage Opportunity:")
+                        result.append(" --> ".join([self.currencies[p] for p in print_cycle[::-1]]))
+        return result
+                        
 
     def preamble(self,currencies, rates, x):
         index = currencies.index(x)
         if currencies[index] != currencies[len(currencies)-1]:
-            print ('true')
+            # print ('true')
             j = currencies[len(currencies)-1]
             currencies[len(currencies)-1] = currencies[index]
             currencies[index] = j
-            print(currencies)
-            print (rates[index])
-            print (rates)
+            # # print(currencies)
+            # print (rates[index])
+            # print (rates)
             i = rates[len(rates)-1]
             rates[len(rates)-1] = rates[index]
             rates[index] = i
-            print(rates)
-        self.arbitrage(currencies, rates)
+            # print(rates)
+        return self.arbitrage(self,currencies, rates)
 
     def run(self,x):
-        self.preamble(self.currencies, self.rates, x)
+        return self.preamble(self,self.currencies, self.rates, x)
         
 
 
