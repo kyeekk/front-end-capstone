@@ -1,44 +1,20 @@
 {%extends "base.html"%}  
 {%block main%}
-<header>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image:url('static/images/pic5.png')">
-          <div class="carousel-caption d-none d-md-block">
-          </div>
-        </div>
-        <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('static/images/pic11.png')">
-          <div class="carousel-caption d-none d-md-block">
-          </div>
-        </div>
-        <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('static/images/pic12.jpg')">
-          <div class="carousel-caption d-none d-md-block">
-          </div>
-        </div>
+<header class="bg-primary py-5 mb-5"> 
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-lg-12">
+        <h1 class="display-4 text-white mt-5 mb-2">Business Name or Tagline</h1>
+        <p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p> 
+        <a class="btn btn-primary" href="{{ url_for('login')}}">Login</a>   <a class="btn btn-primary" href="{{ url_for('register')}}">Register</a> 
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-  </header>
+  </div> 
+</header>
 
   <!-- Page Content -->
   <div class="container">
 
-    <h1 class="my-4">Welcome to CA</h1> 
     
     <!-- Marketing Icons Section -->
     <div class="row">    
@@ -51,15 +27,13 @@
         </div>
       </div>
 
-      <div class="col-lg-6 mb-6" style="width: 18rem;">
-        <img class="img-responsive" src="static/images/cc.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Currency Converter</h5>
-          <p class="card-text-center">Access real-time rates for  major FX pairs such as JMD/USD, CHF/USD, TTD/JMD and more.</p>
-        </div>
+      <div class="col-lg-6 mb-6" style="width: 18rem;"> 
+          <a><img class="img-responsive" src="static/images/cc.png" alt="Card image cap"></a>
+          <div class="card-body"> 
+            <h5 class="card-title">Currency Converter</h5>
+            <p class="card-text-center">Access real-time rates for  major FX pairs such as JMD/USD, CHF/USD, TTD/JMD and more.</p>
+          </div> 
       </div>
-      
-     
     </div>
     <!-- /.row -->
 
@@ -68,69 +42,36 @@
     <h2>Why Choose CA?</h2>
 
     <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
+      <div class="col-lg-4 col-sm-4 portfolio-item">
+        <div class="card h-80">
           <a href="#"><img class="card-img-top" src="static/images/money.png" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
               <a href="#">Guaranteed Profits</a>
             </h4>
-            <p class="card-text">A near risk-free trading strategy, currency arbitrage is preferred due to the opportunity to register significant profit. Since the price discrepancies in the forex market are usually measured in micro-pips, in order to make a profit. his arbitrage maneuvers through differnt currencies in order to get your desired currency at the lowest price.</p>
+            <p class="card-text">A near risk-free trading strategy, currency arbitrage is preferred due to the opportunity to register significant profit. </p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
+      <div class="col-lg-4 col-sm-4 portfolio-item">
+        <div class="card h-80">
           <a href="#"><img class="card-img-top" src="static/images/risk1.jpg" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
               <a href="#">Risk Free Trade Oppotunity</a>
             </h4>
-            <p class="card-text">Forex arbitrage trading is considered near risk-free due to strategies which provide the trader with the opportunity to register profit without having an open currency exposure. </p>
+            <p class="card-text">Currency trading is considered risk-free due to strategies which provide the trader with the opportunity to profit without having an open currency exposure. </p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
+      <div class="col-lg-4 col-sm-4 portfolio-item">
+        <div class="card h-90">
           <a href="#"><img class="card-img-top" src="static/images/easy2.png" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
               <a href="#">Easy to Use</a>
             </h4>
-            <p class="card-text">Our users able to access arbitrage opportunities with the touch of a button. There is no prior knowledge needed to obtain this information</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-150">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-150">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+            <p class="card-text">Our users are able to access arbitrage opportunities with the touch of a button. There is no prior knowledge needed to obtain this information.</p>
           </div>
         </div>
       </div>

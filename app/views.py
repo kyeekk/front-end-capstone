@@ -459,13 +459,7 @@ def Convert():
         return render_template('Convert.html', form = form, rate = rate)
     form = Form()
     if request.method == 'POST':   
-        c1= form.currencies.data
-        x= c1
-        arbitrage = Arbitrage()  
-        arbitrage.run(x) 
-        
-        
-        return render_template('rates.html',arbitrage=arbitrage )
+       return render_template('rates.html')
 
         #c1 = form.currencies.data
         #c2 = form.currencies1.data
@@ -500,8 +494,12 @@ def profile():
     return render_template('profile.html',date = datejoined) 
 
 @app.route("/rates") 
-def rates(): 
-    return render_template('rates.html') 
+def rates():  
+    form= Form()  
+    c1 = form.currencies.data
+    test = Arbitrage()  
+    test.run(c1)
+    return render_template('rates.html', test=test) 
 
 @app.route('/services')
 def services():
