@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block main %} 
+<h1 class="mt-4 mb-3">Portfolio 1
+  <small>Subheading</small>
+</h1>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="{{ url_for('home')}}">Home</a>
+  </li>
+  <li class="breadcrumb-item active">Portfolio 1</li>
+</ol>
+
+<!-- Project One -->
+<div class="row">
+  <div class="col-md-7">
+    <a href="#">
+      <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+    </a>
+  </div>
+  <div class="col-md-5"> 
+    <h3 id = "center">Conversion</h3>
+    <form action="{{ url_for('Convert') }}" method="post" enctype="multipart/form-data"> 
+          {{ form.csrf_token }}
+          <div class="form-group">
+            {{ form.currencies.label}} {{ form.currencies(class="form-control") }} 
+            
+          </div>
+    <div class="form-group">
+            {{ form.currencies1.label}} {{ form.currencies1(class="form-control") }}
+         </div>
+      <button type="submit" id="button">Get Rate</button>
+   </form>  
+
+   <p>Exchange Rate: {{rate}} </p> 
+   
+  </div>
+</div>
+<!-- /.row -->
+
+<hr>
+
+<!-- Pagination -->
+<ul class="pagination justify-content-center">
+  <li class="page-item">
+    <a class="page-link" href="#" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+      <span class="sr-only">Previous</span>
+    </a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#">1</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#">2</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#">3</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      <span class="sr-only">Next</span>
+    </a>
+  </li>
+</ul> 
+{% endblock %}
+
+
+  

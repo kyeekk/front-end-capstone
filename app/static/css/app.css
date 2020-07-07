@@ -1,0 +1,45 @@
+body {
+    padding-top: 5rem;
+}
+
+#words{
+font-weight:bold;
+}
+img{
+height:400px;
+width:400px;
+}
+#grids{
+display: grid;
+grid-template-columns:1fr 1fr 1fr;
+
+grid-auto-flow:row;
+grid-gap:5%;
+}
+.grids{
+display: grid;
+grid-template-columns:1fr 1fr 1fr;
+
+grid-auto-flow:row;
+width:100%;
+grid-gap:5%;
+}
+#View{
+padding:10px;
+background-color:black;
+color:white;
+border:none;
+border-radius:8px;
+margins 4px 2px; 
+}
+button{
+padding:10px;
+background-color:black;
+color:white;
+border:none;
+border-radius:8px;
+margins 4px 2px; 
+}
+footer  {
+    padding-top: 20px;
+}
