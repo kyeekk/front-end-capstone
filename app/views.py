@@ -82,9 +82,9 @@ def Convert():
         c1 = form.currencies.data 
         test = Arbitrage.run(Arbitrage,c1)
         thing1 = Arbitrage.findProfit(Arbitrage, test)
-        print (thing1)
+        thing2 = Arbitrage.findXrate(Arbitrage, test)
 
-        return render_template('rates.html', c1 = c1, form=form, test=test, thing1=thing1)   
+        return render_template('rates.html', c1 = c1, form=form, test=test, thing1=thing1, thing2=thing2)   
 
 
 @app.route('/about/')

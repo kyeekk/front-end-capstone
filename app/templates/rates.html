@@ -13,7 +13,7 @@
 </ol>
 
 <div class="row">
-  {% for i in test %}
+  {% for i in range(test|length) %}
   <div class="col-lg-4 portfolio-item">  
      <div class="card h-100">
       <!-- <a href="{{ url_for('rates')}}""><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
@@ -21,8 +21,9 @@
         <h4 class="card-title">
           <a href="#">Arbitrage</a>
         </h4>
-        <p> Arbitrage : {{i}} </p> 
-        <p>You made: {{ thing1[i] }}</p>
+        <p> Arbitrage : {{ test[i] }} </p> 
+        <p>You traded at: {{ thing1[i] }}</p>
+        <p>Exchange rate is: {{ thing2[i] }}</p>
       </div>
     </div> 
   </div>

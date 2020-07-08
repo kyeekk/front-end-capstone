@@ -86,9 +86,9 @@ class Arbitrage:
         def mullst(y):
             mul = 1
             for i in range(len(y)):
-                mul = mul * y[1]
+                mul = mul * y[i]
 
-            return mul
+            return round(mul, 4)
     
         base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
         prod = []
@@ -124,6 +124,26 @@ class Arbitrage:
             #print (ans)
         #print (prod)
         return prod
+    
+    def findXrate(self, x):
+
+        xrate = []
+        
+        for i in range(len(x)):
+            base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
+            
+            lst=[]
+            lst.append(x[i].split(" --> "))
+        
+
+            ask = base + "source={}&currencies={}&format=1".format(lst[0][0], lst[0][len(lst[0])-1])
+            #print (ask)        
+            req1 = requests.get(ask)
+            r = req1.json()
+            #print(r)        
+            xrate.append(format((round(*r['quotes'].values(),2)), '.4f'))
+            
+        return (xrate)
 
 
 ##if __name__ == "__main__":
