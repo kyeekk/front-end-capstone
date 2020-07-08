@@ -83,6 +83,7 @@ class Arbitrage:
 
 
     def findProfit(self, x):
+        seed = 0.0016
         def mullst(y):
             mul = 1
             for i in range(len(y)):
@@ -119,7 +120,7 @@ class Arbitrage:
                 
             #print(lst2)
             
-            ans = round(mullst(lst2) + (random.random() / 10), 4)
+            ans = mullst(lst2) + round(random.uniform(0.0009,0.0015), 4)
             prod.append(ans)
             #print (ans)
         #print (prod)
@@ -141,9 +142,9 @@ class Arbitrage:
             req1 = requests.get(ask)
             r = req1.json()
             #print(r)        
-            xrate.append(format((round(*r['quotes'].values(),2)), '.4f'))
+            xrate.append(round(*r['quotes'].values(),4))
             
-        return (xrate)
+        return (xrate, lst[0][len(lst[0])-1])
 
 
 ##if __name__ == "__main__":

@@ -5,7 +5,7 @@ from math import log
 import requests, json
 
 def getrates():   
-    base = "http://api.currencylayer.com/live?access_key=b7349877890bdb8855c621afb2173ec5&"
+    base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
 
     #base url
     curl1 = base+ "source=JMD&currencies=JMD,USD,CAD,GBP,EUR,TTD,KYD,CHF&format=1"
