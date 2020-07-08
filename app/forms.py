@@ -5,8 +5,7 @@ from wtforms.validators import DataRequired, Email, Length, InputRequired
 
 
 class Form(FlaskForm):
-    currencies = SelectField("From:", choices = [('USD', 'USD'),('EUR', 'EUR'),('GBP', 'GBP'),('AUD', 'AUD'),('NZD', 'NZD'),('JMD', 'JMD'),('ZAR', 'ZAR'),('CAD', 'CAD'),('CHF', 'CHF'),('JPY', 'JPY')])
-    currencies1 = SelectField("To:",  choices = [('USD', 'USD'),('EUR', 'EUR'),('GBP', 'GBP'),('AUD', 'AUD'),('NZD', 'NZD'),('JMD', 'JMD'),('ZAR', 'ZAR'),('CAD', 'CAD'),('CHF', 'CHF'),('JPY', 'JPY')]) 
+    currencies = SelectField("From:", choices = [('JMD', 'Jamaican Dollar'),('USD', 'United States Dollar'),('CAD', 'Canadian Dollar'),('GBP', 'British Pound'),('EUR', 'Euro'),('EUR', 'Euro'),('TTD', 'Trinidadian Dollar'),('KYD', 'Cayman Island Dollar')])
 
 class Contact(FlaskForm): 
     firstname = StringField('First Name', validators=[DataRequired()])

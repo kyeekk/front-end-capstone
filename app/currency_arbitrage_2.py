@@ -1,5 +1,6 @@
 from typing import Tuple, List
 from math import log
+import requests, json
 
 
 class Arbitrage:
@@ -28,7 +29,6 @@ class Arbitrage:
         trans_graph = self.negate_logarithm_convertor(rates_matrix)
 
         # Pick any source vertex -- we can run Bellman-Ford from any vertex and get the right result
-
         source = 0
         n = len(trans_graph)
         min_dist = [float('inf')] * n
@@ -36,7 +36,6 @@ class Arbitrage:
         pre = [-1] * n
         result = []
         min_dist[source] = source
-
         # 'Relax edges |V-1| times'
         for _ in range(n-1):
             for source_curr in range(n):
@@ -61,8 +60,7 @@ class Arbitrage:
                         # print ('\n', print_cycle)
                         # print("Arbitrage Opportunity:")
                         result.append(" --> ".join([self.currencies[p] for p in print_cycle[::-1]]))
-        return result
-                        
+        return result                        
 
     def preamble(self,currencies, rates, x):
         index = currencies.index(x)
@@ -82,7 +80,50 @@ class Arbitrage:
 
     def run(self,x):
         return self.preamble(self,self.currencies, self.rates, x)
-        
+
+
+    def findProfit(self, x):
+        def mullst(y):
+            mul = 1
+            for i in range(len(y)):
+                mul = mul * y[1]
+
+            return mul
+    
+        base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
+        prod = []
+    
+        for i in range(len(x)):
+            lst=[]
+            lst.append(x[i].split(" --> "))
+            
+            #print(lst)
+            #print(len(lst[0]))
+
+            j=0
+            lst2 = []
+            while j < len(lst[0])-1:
+                base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
+                
+                curl = base + "source={}&currencies={}&format=1".format(lst[0][j], lst[0][j+1])
+                #print(curl)
+
+                req = requests.get(curl)
+                result = req.json()
+                #print(result)
+
+                #print(*result['quotes'].values())
+                lst2.append(*result['quotes'].values())            
+                
+                j+=1
+                
+            #print(lst2)
+            
+            ans = mullst(lst2)
+            prod.append(ans)
+            #print (ans)
+        #print (prod)
+        return prod
 
 
 ##if __name__ == "__main__":

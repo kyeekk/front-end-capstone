@@ -1,8 +1,8 @@
 {% extends "base.html"%}
 {% block main %} 
  <!-- Page Heading/Breadcrumbs -->
- <h1 class="mt-4 mb-3">Portfolio 2
-  <small>Subheading</small>
+ <h1 class="mt-4 mb-3"> Opportunities
+  <small>Arbitrage for for {{c1}} </small>
 </h1>
 
 <ol class="breadcrumb">
@@ -16,12 +16,13 @@
   {% for i in test %}
   <div class="col-lg-4 portfolio-item">  
      <div class="card h-100">
-      <a href="{{ url_for('rates')}}""><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+      <!-- <a href="{{ url_for('rates')}}""><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
       <div class="card-body">
         <h4 class="card-title">
           <a href="#">Arbitrage</a>
         </h4>
         <p> Arbitrage : {{i}} </p> 
+        <p>You made: {{ thing1[i] }}</p>
       </div>
     </div> 
   </div>

@@ -13,26 +13,30 @@
 
 <!-- Project One -->
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-5">
     <a href="#">
-      <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+      <img class="img-fluid rounded mb-3 mb-md-0" src="static/images/convert.png" alt="">
     </a>
   </div>
-  <div class="col-md-5"> 
+  <div class="col-md-7"> 
     <h3 id = "center">Conversion</h3>
+
+    <div><br></div>
+
     <form action="{{ url_for('Convert') }}" method="post" enctype="multipart/form-data"> 
           {{ form.csrf_token }}
+
           <div class="form-group">
-            {{ form.currencies.label}} {{ form.currencies(class="form-control") }} 
-            
+            <label>{{ form.currencies.label}} </label>
+            {{ form.currencies(class="form-control form-control-lg") }} 
           </div>
-    <div class="form-group">
-            {{ form.currencies1.label}} {{ form.currencies1(class="form-control") }}
-         </div>
-      <button type="submit" id="button">Get Rate</button>
+
+          <div><br></div>
+          <div><br></div>
+      <button class="btn btn-outline-primary btn-lg" type="submit">Get Rate</button>
    </form>  
 
-   <p>Exchange Rate: {{rate}} </p> 
+  <!-- <p>Exchange Rate: {{rate}} </p>  -->
    
   </div>
 </div>
