@@ -8,22 +8,17 @@ from typing import Tuple, List
 from app.currency_arbitrage_2 import Arbitrage
 from math import log
 from app import app, db, login_manager
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session, Response
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.security import check_password_hash 
 import os 
 import datetime
 from app import app
-from app.forms import Form 
-from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, logout_user, current_user, login_required
-from app.forms import Login, Register
+from app.forms import Login, Register, Form
 from app.models import User
-from werkzeug.security import check_password_hash
 import io
 import random
 import requests, json
-from flask import Response
 from matplotlib import pyplot as plt 
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -53,10 +48,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 #     return(value)
 
-def format_date_joined():
-    now = datetime.datetime.now() # today's date
-    date_joined = datetime.date(2019, 2, 7) # a specific date
-    return "Joined " + date_joined.strftime("%B, %Y")
+
 
 ###
 # Routing for your application.
@@ -70,7 +62,7 @@ def home():
     
 
 @app.route('/Convert', methods = ['GET','POST'])
-#@login_required
+@login_required
 def Convert():
     if request.method == 'GET':
         form = Form()
@@ -79,16 +71,13 @@ def Convert():
     form = Form()
     if request.method == 'POST':   
         c1 = form.currencies.data 
-       
-        test = Arbitrage.run(Arbitrage,c1)   
+        test = Arbitrage.run(Arbitrage,c1)    
+        thing1 = Arbitrage.findProfit(Arbitrage, test)
+        thing2 = Arbitrage.findXrate(Arbitrage, test)
         
-        print(form)  
-        print('aaaaaaa')
-        print(c1) 
-        print('aaaaaaaaaa')
-        print(test)
+    
        # print(str(rate)) 
-        return render_template('rates.html', c1 = c1, form=form, test=test)   
+        return render_template('rates.html', c1 = c1, form=form, test=test, thing1=thing1, thing2=thing2)   
 
 
 @app.route('/about')
@@ -100,7 +89,7 @@ def about():
 
 @app.route("/rates") 
 def rates():  
-    return render_template('rates.html', test=test, c1=c1) 
+    return render_template('rates.html') 
 
 @app.route('/services') 
 def services():
@@ -113,7 +102,9 @@ def contact():
 
 
 @app.route('/register', methods=['GET', 'POST'])
-def register(): 
+def register():  
+    if current_user.is_authenticated:
+        return redirect(url_for('Convert'))
     if request.method == 'GET': 
         form = Register()
         return render_template('register.html', form = form)
@@ -125,8 +116,8 @@ def register():
         Lname =  form.lastname.data
         Email = form.email.data
         Password = form.password.data 
-        user =User(Fname,Lname,Email,password)
-        db.session.add(profile)
+        user =User(Fname,Lname,Email,Password)
+        db.session.add(user)
         db.session.commit() 
         return redirect(url_for('login'))
     return render_template('register.html', form=form) 
@@ -147,13 +138,14 @@ def login():
             remember_me = False
 
             if 'remember_me' in request.form:
-                remember_me = True
+                remember_me = True 
 
-                login_user(user, remember=remember_me)
+                login_user(user, remember=remember_me) 
 
-                flash('Logged in successfully.', 'success')
+                session['logged_in'] = True
 
-            return redirect(url_for('Convert'))
+
+                return redirect(url_for('Convert'))
         else:
             flash('Username or Password is incorrect.', 'danger')
     return render_template('login.html', form=form)
@@ -164,13 +156,13 @@ def login():
 @login_required
 def logout():
     # Logout the user and end the session
+    session.pop('logged_in', None)
     logout_user()
-    flash('You have been logged out.', 'danger')
-    return redirect(url_for('home'))
+    return redirect(url_for('home')) 
 
 @login_manager.user_loader
 def load_user(id):
-    return UserProfile.query.get(int(id))
+    return User.query.get(int(id))
 ###
 # The functions below should be applicable to all Flask apps.
 ###

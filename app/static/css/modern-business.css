@@ -13,7 +13,12 @@ body {
 .card-text{  
   text-align: justify;
 
-} 
+}  
+
+
+.page-section {
+  padding: 8rem 0;
+}
 
 .img-responsive{   
   object-position: 50px;
@@ -39,6 +44,9 @@ body {
   }
 } 
 
+.carousel-item, h1{
+  
+}
 
 .features-icons {
   padding-top: 7rem;

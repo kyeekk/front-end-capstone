@@ -1,5 +1,6 @@
 from typing import Tuple, List
-from math import log
+from math import log 
+import requests, json
 
 
 class Arbitrage:
@@ -81,7 +82,70 @@ class Arbitrage:
         return self.arbitrage(self,currencies, rates)
 
     def run(self,x):
-        return self.preamble(self,self.currencies, self.rates, x)
+        return self.preamble(self,self.currencies, self.rates, x) 
+    
+    def findProfit(self, x):
+        def mullst(y):
+            mul = 1
+            for i in range(len(y)):
+                mul = mul * y[i]
+
+            return round(mul, 4)
+    
+        base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
+        prod = []
+    
+        for i in range(len(x)):
+            lst=[]
+            lst.append(x[i].split(" --> "))
+            
+            #print(lst)
+            #print(len(lst[0]))
+
+            j=0
+            lst2 = []
+            while j < len(lst[0])-1:
+                base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
+                
+                curl = base + "source={}&currencies={}&format=1".format(lst[0][j], lst[0][j+1])
+                #print(curl)
+
+                req = requests.get(curl)
+                result = req.json()
+                #print(result)
+
+                #print(*result['quotes'].values())
+                lst2.append(*result['quotes'].values())            
+                
+                j+=1
+                
+            #print(lst2)
+            
+            ans = mullst(lst2)
+            prod.append(ans)
+            #print (ans)
+        #print (prod)
+        return prod
+    
+    def findXrate(self, x):
+
+        xrate = []
+        
+        for i in range(len(x)):
+            base = "http://api.currencylayer.com/live?access_key=98c124bf7435efa765502126e4a3f026&"
+            
+            lst=[]
+            lst.append(x[i].split(" --> "))
+        
+
+            ask = base + "source={}&currencies={}&format=1".format(lst[0][0], lst[0][len(lst[0])-1])
+            #print (ask)        
+            req1 = requests.get(ask)
+            r = req1.json()
+            #print(r)        
+            xrate.append(format((round(*r['quotes'].values(),2)), '.4f'))
+            
+        return (xrate)
         
 
 

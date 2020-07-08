@@ -20,19 +20,15 @@
   </div>
   <div class="col-md-5"> 
     <h3 id = "center">Conversion</h3>
-    <form action="{{ url_for('Convert') }}" method="post" enctype="multipart/form-data"> 
+    <form action="{{ url_for('Convert') }}" method="POST" enctype="multipart/form-data"> 
           {{ form.csrf_token }}
           <div class="form-group">
             {{ form.currencies.label}} {{ form.currencies(class="form-control") }} 
             
           </div>
-    <div class="form-group">
-            {{ form.currencies1.label}} {{ form.currencies1(class="form-control") }}
-         </div>
       <button type="submit" id="button">Get Rate</button>
    </form>  
 
-   <p>Exchange Rate: {{rate}} </p> 
    
   </div>
 </div>
