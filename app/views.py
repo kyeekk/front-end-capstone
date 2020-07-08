@@ -75,7 +75,6 @@ def Convert():
     if request.method == 'GET':
         form = Form()
         rate = 0 
-        
         return render_template('Convert.html', form = form, rate = rate)
     form = Form()
     if request.method == 'POST':   
@@ -97,10 +96,7 @@ def about():
     """Render the website's about page."""
     return render_template('about.html')
 
-@app.route('/profile')
-def profile():
-    datejoined = format_date_joined()
-    return render_template('profile.html',date = datejoined) 
+
 
 @app.route("/rates") 
 def rates():  
@@ -153,14 +149,13 @@ def login():
             if 'remember_me' in request.form:
                 remember_me = True
 
-            login_user(user, remember=remember_me)
+                login_user(user, remember=remember_me)
 
-            flash('Logged in successfully.', 'success')
+                flash('Logged in successfully.', 'success')
 
             return redirect(url_for('Convert'))
         else:
             flash('Username or Password is incorrect.', 'danger')
-
     return render_template('login.html', form=form)
 
 

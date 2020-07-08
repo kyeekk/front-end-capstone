@@ -2,16 +2,10 @@
 
 {% block main %} 
 <h1 class="page-header">Registration</h1> 
-<ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="{{ url_for('home')}}">Home</a>
-    </li>
-    <li class="breadcrumb-item active">Portfolio 1</li>
-  </ol>
-  
+
 
 <div id = "container">
-<form action="{{ url_for('profile') }}" method="post" enctype="multipart/form-data">
+<form action="{{ url_for('login') }}" method="POST" enctype="multipart/form-data">
         {{ form.csrf_token }}
         <div class="form-group">
             {{ form.firstname.label}} {{ form.firstname(class="form-control") }}
