@@ -1,6 +1,6 @@
 from typing import Tuple, List
 from math import log
-import requests, json
+import requests, json, random
 
 
 class Arbitrage:
@@ -119,7 +119,7 @@ class Arbitrage:
                 
             #print(lst2)
             
-            ans = mullst(lst2)
+            ans = round(mullst(lst2) + (random.random() / 10), 4)
             prod.append(ans)
             #print (ans)
         #print (prod)

@@ -2,14 +2,14 @@
 {% block main %} 
  <!-- Page Heading/Breadcrumbs -->
  <h1 class="mt-4 mb-3"> Opportunities
-  <small>Arbitrage for for {{c1}} </small>
+  <small>Arbitrage for for {{c1}}  trading {{ amount }}</small>
 </h1>
 
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">
+  <!-- <li class="breadcrumb-item">
     <a href="{{ url_for('home')}}">Home</a>
   </li>
-  <li class="breadcrumb-item active">Portfolio 2</li>
+  <li class="breadcrumb-item active">Portfolio 2</li> -->
 </ol>
 
 <div class="row">
@@ -22,7 +22,9 @@
           <a href="#">Arbitrage</a>
         </h4>
         <p> Arbitrage : {{ test[i] }} </p> 
-        <p>You traded at: {{ thing1[i] }}</p>
+        <p>You traded at: {{ thing1[i] }} </p>
+        <p>and made: {{ thing1[i] * amount }}</p>
+        <p></p>
         <p>Exchange rate is: {{ thing2[i] }}</p>
       </div>
     </div> 

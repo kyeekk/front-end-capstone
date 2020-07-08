@@ -80,11 +80,12 @@ def Convert():
     form = Form()
     if request.method == 'POST':   
         c1 = form.currencies.data 
+        amount = form.amount.data
         test = Arbitrage.run(Arbitrage,c1)
         thing1 = Arbitrage.findProfit(Arbitrage, test)
         thing2 = Arbitrage.findXrate(Arbitrage, test)
 
-        return render_template('rates.html', c1 = c1, form=form, test=test, thing1=thing1, thing2=thing2)   
+        return render_template('rates.html', c1 = c1, form=form, test=test, thing1=thing1, thing2=thing2, amount=amount)   
 
 
 @app.route('/about/')

@@ -1,11 +1,12 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms import TextAreaField, TextField, SelectField,PasswordField, SubmitField, StringField, Form
+from wtforms import TextAreaField, TextField, SelectField,PasswordField, SubmitField, StringField, IntegerField, Form
 from wtforms.validators import DataRequired, Email, Length, InputRequired
 
 
 class Form(FlaskForm):
     currencies = SelectField("From:", choices = [('JMD', 'Jamaican Dollar'),('USD', 'United States Dollar'),('CAD', 'Canadian Dollar'),('GBP', 'British Pound'),('EUR', 'Euro'),('TTD', 'Trinidadian Dollar'),('KYD', 'Cayman Island Dollar'),('CHF', 'Swiss Franc')])
+    amount = IntegerField("Enter amount to convert:")
 
 class Contact(FlaskForm): 
     firstname = StringField('First Name', validators=[DataRequired()])
