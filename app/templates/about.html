@@ -2,99 +2,141 @@
 
 {% block main %}
 <!-- Page Heading/Breadcrumbs -->
-<h1 class="mt-4 mb-3">About
-  <small>Subheading</small>
-</h1>
+<h1 class="mt-4 mb-3">About</h1> 
+<hr>
 
-<ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a href="{{url_for('home')}}">Home</a>
-  </li>
-  <li class="breadcrumb-item active">About</li>
-</ol>
+
 
 <!-- Intro Content -->
 <div class="row">
   <div class="col-lg-6">
-    <img class="img-fluid rounded mb-4" src="http://placehold.it/750x450" alt="">
+    <img class="img-fluid rounded mb-4" src="static/images/ok.png">
   </div>
   <div class="col-lg-6">
-    <h2>About Modern Business</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, magni, aperiam vitae illum voluptatum aut sequi impedit non velit ab ea pariatur sint quidem corporis eveniet. Odit, temporibus reprehenderit dolorum!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis?</p>
+    <h2>What is Forex Arbitrage?</h2>
+    <p>The average forex arbitrage is very technical and therefore requires previous knowlegde of the system to maneuver and gain a profit. We designed a forex arbitrage which allows the average person to easily maneuver and profit by displaying the different arbitrage opportunities to the user with the click of a button.</p>
+    <p>The system utilizes eight major currencies such as JMD, GBP, EUR, TTD, CHF, CAD, USD and KYD to accept as source currencies and produce a directed graph displaying the shortest paths available and the total rate for the user.</p>
+    
   </div>
 </div>
-<!-- /.row -->
+<!-- /.row --> 
+
+
+<br>
+<!-- Image Showcases -->
+<section class="showcase">
+  <div class="container-fluid p-0">
+    <div class="row no-gutters">
+
+      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/images/pic8.jpg');"></div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <h2>Trading</h2>
+        <p class="lead mb-0">We provide online access to a forex arbitrage which allows users to spectate the currency arbitrage opportunities provided with the click of a button.</p>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-lg-6 text-white showcase-img" style="background-image: url('static/images/api.jpg');"></div>
+      <div class="col-lg-6 my-auto showcase-text">
+        <h2>Currency Data & Analytics</h2>
+        <p class="lead mb-0"> The currency layer api trusted by thousands delivers the standard in foreign exchange data via their exchange rates API which is used by our system.
+
+          The exchange rates API offers exceptional quality, reliability and accuracy.</p>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/images/bel.png');"></div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <h2>Bellman Ford Algorithm</h2>
+        <p class="lead mb-0"> The system utilizes the Bellman Ford algorithm to find the shortest path between currencies. It is used in situations where a source currency is selected and the shortest paths to every other currency in the graph needs to be determined.</p>
+      </div>
+    </div>
+  </div>
+</section> 
+
+<!-- Testimonials -->
+<section class="testimonials text-center bg-light">
+  <div class="container">
+    <h2 class="mb-5">What people are saying...</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded-circle mb-3" src="static/images/cus1.jpg" alt="">
+          <h5>Morgan E.</h5>
+          <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded-circle mb-3" src="static/images/cus2.jpg" alt="">
+          <h5>Margret S.</h5>
+          <p class="font-weight-light mb-0">"Amazing and easy to use."</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded-circle mb-3" src="static/images/cus3.jpg" alt="">
+          <h5>Sarah W.</h5>
+          <p class="font-weight-light mb-0">"Thanks so much for making this free resource available to us!"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Team Members -->
-<h2>Our Team</h2>
+<h2>Our Team</h2> 
+<br>
 
 <div class="row">
-  <div class="col-lg-4 mb-4">
+  <div class="col-lg-3">
     <div class="card h-100 text-center">
-      <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+      <img class="card-img-top" src="static/images/kay.jpg" alt="">
       <div class="card-body">
-        <h4 class="card-title">Team Member</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+        <h4 class="card-title">Kayla Effs</h4>
       </div>
       <div class="card-footer">
-        <a href="#">name@example.com</a>
+        <a href="#">keffs@gmail.com</a>
       </div>
     </div>
   </div>
-  <div class="col-lg-4 mb-4">
+  <div class="col-lg-3">
     <div class="card h-100 text-center">
-      <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+      <img class="card-img-top" src="static/images/dom.jpg" alt="">
       <div class="card-body">
-        <h4 class="card-title">Team Member</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+        <h4 class="card-title">Domonique Eccleston</h4>
       </div>
       <div class="card-footer">
-        <a href="#">name@example.com</a>
+        <a href="#">d.eccleston@gmail.com</a>
       </div>
     </div>
   </div>
-  <div class="col-lg-4 mb-4">
+  <div class="col-lg-3">
     <div class="card h-100 text-center">
-      <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+      <img class="card-img-top" src="static/images/morg.jpg" alt="">
       <div class="card-body">
-        <h4 class="card-title">Team Member</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+        <h4 class="card-title">Christopher Morgan</h4>
       </div>
       <div class="card-footer">
-        <a href="#">name@example.com</a>
+        <a href="#">cmorgan@gmail.com</a>
+      </div>
+    </div>
+  </div> 
+
+  <div class="col-lg-3">
+    <div class="card h-100 text-center">
+      <img class="card-img-top" src="static/images/taf.jpg" alt="">
+      <div class="card-body">
+        <h4 class="card-title">Tafari Lewis</h4>
+      </div>
+      <div class="card-footer">
+        <a href="#">Tlewis@gmail.com</a>
       </div>
     </div>
   </div>
 </div>
 <!-- /.row -->
 
-<!-- Our Customers -->
-<h2>Our Customers</h2>
-<div class="row">
-  <div class="col-lg-2 col-sm-4 mb-4">
-    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-  </div>
-  <div class="col-lg-2 col-sm-4 mb-4">
-    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-  </div>
-  <div class="col-lg-2 col-sm-4 mb-4">
-    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-  </div>
-  <div class="col-lg-2 col-sm-4 mb-4">
-    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-  </div>
-  <div class="col-lg-2 col-sm-4 mb-4">
-    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-  </div>
-  <div class="col-lg-2 col-sm-4 mb-4">
-    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-  </div>
-</div>
 <!-- /.row -->
 {% endblock %}
  

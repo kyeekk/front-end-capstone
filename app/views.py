@@ -92,10 +92,10 @@ def Convert():
         return render_template('rates.html', c1 = c1, form=form, test=test)   
 
 
-@app.route('/about/')
+@app.route('/about')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="an Arbitrage.")
+    return render_template('about.html')
 
 @app.route('/profile')
 def profile():
@@ -114,9 +114,7 @@ def services():
 def contact(): 
     return render_template('contact.html') 
 
-@app.route('/pricing')
-def pricing(): 
-    return render_template('pricing.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register(): 
