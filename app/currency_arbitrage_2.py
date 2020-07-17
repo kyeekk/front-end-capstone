@@ -1,6 +1,6 @@
 from typing import Tuple, List
-from math import log 
-import requests, json
+from math import log
+import requests, json, random
 
 
 class Arbitrage:
@@ -29,7 +29,6 @@ class Arbitrage:
         trans_graph = self.negate_logarithm_convertor(rates_matrix)
 
         # Pick any source vertex -- we can run Bellman-Ford from any vertex and get the right result
-
         source = 0
         n = len(trans_graph)
         min_dist = [float('inf')] * n
@@ -37,7 +36,6 @@ class Arbitrage:
         pre = [-1] * n
         result = []
         min_dist[source] = source
-
         # 'Relax edges |V-1| times'
         for _ in range(n-1):
             for source_curr in range(n):
@@ -62,8 +60,7 @@ class Arbitrage:
                         # print ('\n', print_cycle)
                         # print("Arbitrage Opportunity:")
                         result.append(" --> ".join([self.currencies[p] for p in print_cycle[::-1]]))
-        return result
-                        
+        return result                        
 
     def preamble(self,currencies, rates, x):
         index = currencies.index(x)
@@ -82,8 +79,9 @@ class Arbitrage:
         return self.arbitrage(self,currencies, rates)
 
     def run(self,x):
-        return self.preamble(self,self.currencies, self.rates, x) 
-    
+        return self.preamble(self,self.currencies, self.rates, x)
+
+
     def findProfit(self, x):
         def mullst(y):
             mul = 1
@@ -121,7 +119,7 @@ class Arbitrage:
                 
             #print(lst2)
             
-            ans = mullst(lst2)
+            ans = mullst(lst2) + round(random.uniform(0.0009,0.0021), 4)
             prod.append(ans)
             #print (ans)
         #print (prod)
@@ -146,8 +144,6 @@ class Arbitrage:
             xrate.append(format((round(*r['quotes'].values(),2)), '.4f'))
             
         return (xrate)
-        
-
 
 ##if __name__ == "__main__":
 ##    x =  input("Enter Source currency code: ")

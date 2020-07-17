@@ -8,15 +8,17 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('static/images/pic1.jpg')">
-        <div class="carousel-caption d-none d-md-block">
-          <h1></h1> 
+      <div class="carousel-item active" style="background-image: url('static/images/off.jpg')">
+        <div class="carousel-caption d-none d-md-block">  
+          <h1>WHAT IS A CURRENY ARBITRAGE?</h1> 
+          <a href="{{url_for('about')}}" type="button" class="btn btn-light">Learn More</a>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('static/images/pic12.jpg')">
-        <div class="carousel-caption d-none d-md-block">
-          
+      <div class="carousel-item" style="background-image: url('static/images/forex.jpg')">
+        <div class="carousel-caption d-none d-md-block">  
+          <h1>HOW DOES IT WORK?</h1> 
+          <a href="{{url_for('about')}}" type="button" class="btn btn-light">Learn More</a>
         </div>
       </div>
     </div> 
@@ -30,81 +32,76 @@
     </a>
     
   </div>
-</header>
+</header>  
+<br> 
 
-  <!-- Page Content -->
+  <!--  Content -->
 <div class="container"> 
 <!-- Marketing Icons Section --> 
-<br> 
-<section class="page-section bg-primary" id="about">
-  <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-              <h1 class="text-white mt-0">FOREX ARBITRAGE</h1>
-              <hr class="divider light my-4" />
-              <h3 class="text-white-50 mb-4">We've got what you need!</h3>
-              <a class="btn btn-light btn-xl js-scroll-trigger" href="{{ url_for('login')}}">Login</a> <a class="btn btn-light btn-xl js-scroll-trigger" href="{{ url_for('register')}}">Sign Up</a>
-          </div>
-      </div>
-  </div>
-</section>
+
+<!-- Features Section -->
+<div class="row">
+  
     <!-- Portfolio Section --> 
     <br>
-    <h2>Benefits of Forex Arbitrage</h2> 
-    <br>
-    <div class="row">
-      <div class="col-lg-4 col-sm-4 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="static/images/money.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Guaranteed Profits</a>
-            </h4>
-            <p class="card-text">A near risk-free trading strategy which is preferred due to the opportunity to gain significant profit. </p>
-          </div>
+    <h2>Benefits of Currency Arbitrage</h2>  
+    <hr>
+    <br> 
+    <div class="row"> 
+      <div class="col-sm-6 shadow p-3 mb-5 text-white bg-info rounded">
+        <h5 class="card-header">Guaranteed Profits</h5>
+        <div class="card-body">
+          <p class="card-text">A near risk-free trading strategy which is preferred due to the opportunity to gain significant profit.</p>
         </div>
-      </div>
-      <div class="col-lg-4 col-sm-4 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="static/images/risk.png" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Risk Free Trade Oppotunity</a>
-            </h4>
-            <p class="card-text">Strategies which provide the trader with the opportunity to profit without having an open currency exposure. </p>
-          </div>
+      </div>   
+
+      <div class="col-sm-6 shadow p-3 mb-5 text-white bg-info rounded">
+        <h5 class="card-header">Risk Free Trade Oppotunity</h5>
+        <div class="card-body">
+          <p class="card-text">Strategies which provide the trader with the opportunity to profit without having an open currency exposure.</p>
+         
         </div>
-      </div>
-      <div class="col-lg-4 col-sm-4 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="static/images/hand.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Easy to use</a>
-            </h4>
-            <p class="card-text"> Trade with just the touch of a button. No prior knowledge needed. </p>
-          </div>
+      </div>  
+
+      <div class="col-sm-6 shadow p-3 mb-5 text-white bg-info rounded">
+        <h5 class="card-header">Easy to use</h5>
+        <div class="card-body">
+          <p class="card-text">Trade with just the touch of a button. No prior knowledge needed.</p>
         </div>
+      </div>  
+
+      <div class= "col-sm-6 shadow p-3 mb-5 text-white bg-info rounded">
+        <h5 class="card-header">Instant Trade</h5>
+        <div class="card-body">
+          <p class="card-text">Trades are carried out instantaneously and simultaneously.Results of profit-it is not a merit of our system, it is opportunities of the market, and the system only finds them.
+          </p>
+        </div>
+      </div>   
+
+      <div class="col-lg-6">
+  
+        <h2>Services</h2> 
+        <hr>  
+        <p>Features inlude:</p>
+        <ul>
+          <li>Easy to read directed graph showing arbitrage opportunities</li> 
+          <br>  
+          <li>Perform realtime calculations on selected currencies</li> 
+          <br> 
+          <li>Accesible on all devices</li>  
+          <br> 
+          <li>No monthly subscription fee</li> 
+        </ul>
       </div>
+      <div class="col-lg-6">
+        <img class="rounded float-left" src="static/images/serv.jpeg" alt="">
+      </div>
+    </div>
+
     </div>
     <!-- /.row -->
 
-    <!-- Features Section -->
-    <div class="row">
-      <div class="col-lg-6">
-        <h2>Automated platforms, mobile and tablet apps</h2>
-        <p>Features includes:</p>
-        <ul>
-          <li>Easy to read directed graph showing arbitrage opportunities</li>
-          <li>Perform realtime calculations on selected currencies</li>
-          <li>Accesible on all devices</li>
-        </ul>
-        <p>  </p>
-      </div>
-      <div class="col-lg-6">
-        <img class="img-fluid rounded" src="static/images/pic10.png" alt="">
-      </div>
-    </div>
+    
     <!-- /.row -->
 
   

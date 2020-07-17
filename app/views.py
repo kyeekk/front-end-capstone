@@ -62,7 +62,7 @@ def home():
     
 
 @app.route('/Convert', methods = ['GET','POST'])
-@login_required
+#@login_required
 def Convert():
     if request.method == 'GET':
         form = Form()
@@ -70,14 +70,15 @@ def Convert():
         return render_template('Convert.html', form = form, rate = rate)
     form = Form()
     if request.method == 'POST':   
-        c1 = form.currencies.data 
+        c1 = form.currencies.data  
+        amount = form.amount.data
         test = Arbitrage.run(Arbitrage,c1)    
         thing1 = Arbitrage.findProfit(Arbitrage, test)
         thing2 = Arbitrage.findXrate(Arbitrage, test)
         
     
        # print(str(rate)) 
-        return render_template('rates.html', c1 = c1, form=form, test=test, thing1=thing1, thing2=thing2)   
+        return render_template('rates.html', c1 = c1, form=form, test=test, thing1=thing1, thing2=thing2,amount=amount)   
 
 
 @app.route('/about')
@@ -139,13 +140,12 @@ def login():
 
             if 'remember_me' in request.form:
                 remember_me = True 
-
-                login_user(user, remember=remember_me) 
-
                 session['logged_in'] = True
 
 
-                return redirect(url_for('Convert'))
+            login_user(user, remember=remember_me)  
+            session['logged_in'] = True 
+            return redirect(url_for('Convert'))
         else:
             flash('Username or Password is incorrect.', 'danger')
     return render_template('login.html', form=form)
